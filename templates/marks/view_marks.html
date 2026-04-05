@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl mb-4">Marks List</h2>
+
+<form method="GET" class="mb-4">
+    <input type="text" name="search" placeholder="Search by Roll No"
+        class="border p-2 rounded">
+    <button class="bg-blue-600 text-white px-3 py-2 rounded">Search</button>
+</form>
+
+<table class="w-full bg-white shadow rounded">
+    <tr class="bg-gray-200">
+        <th>Student</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Grade</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for m in marks %}
+    <tr>
+        <td>{{ m.student }}</td>
+        <td>{{ m.subject }}</td>
+        <td>{{ m.marks }}</td>
+        <td>{{ m.grade }}</td>
+
+        <td>
+            <a href="{% url 'edit_marks' m.id %}" class="text-blue-600">Edit</a>
+            |
+            <a href="{% url 'delete_marks' m.id %}" class="text-red-600">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

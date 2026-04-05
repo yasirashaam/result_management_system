@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl mb-4">Edit Marks</h2>
+
+<form method="POST" class="bg-white p-6 rounded shadow">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="bg-green-600 text-white px-4 py-2 rounded">
+        Update
+    </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-blue-700 text-white min-h-screen p-4">
+        <h1 class="text-2xl font-bold mb-6">Result System</h1>
+
+        <ul class="space-y-3">
+
+            <li><a href="{% url 'admin_dashboard' %}" class="block hover:bg-blue-600 p-2 rounded">Admin</a></li>
+            <li><a href="{% url 'teacher_dashboard' %}" class="block hover:bg-blue-600 p-2 rounded">Teacher</a></li>
+            <li><a href="{% url 'student_dashboard' %}" class="block hover:bg-blue-600 p-2 rounded">Student</a></li>
+
+            <li><a href="{% url 'add_marks' %}" class="block hover:bg-blue-600 p-2 rounded">Add Marks</a></li>
+            <li><a href="{% url 'view_marks' %}" class="block hover:bg-blue-600 p-2 rounded">View Marks</a></li>
+
+            <li><a href="{% url 'logout' %}" class="block bg-red-500 mt-4 p-2 rounded text-center">Logout</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 p-6">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>

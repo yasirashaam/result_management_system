@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">Student Dashboard</h1>
+
+<div class="bg-white p-6 rounded shadow">
+
+    <canvas id="myChart"></canvas>
+
+</div>
+
+<a href="{% url 'download_result' %}" 
+   class="bg-green-600 text-white px-4 py-2 rounded mt-4 inline-block">
+   Download PDF
+</a>
+
+<script>
+const labels = [
+    {% for r in results %}
+        "{{ r.subject.name }}",
+    {% endfor %}
+];
+
+const data = [
+    {% for r in results %}
+        {{ r.marks }},
+    {% endfor %}
+];
+
+new Chart(document.getElementById('myChart'), {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Marks',
+            data: data
+        }]
+    }
+});
+</script>
+
+{% endblock %}
